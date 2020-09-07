@@ -6,10 +6,10 @@ import streamlit as st
 def load_api():
     #client = Socrata("www.datos.gov.co", None)
     #results = client.get("gt2j-8ykr", limit=1000000)
-    client = Socrata("www.datos.gov.co", None)
-    #              '5aJ1DExqkSA79jE4S3I27ZMyL',
-    #              username="egangiest@gmail.com",
-    #              password="5aJ1DExqkSA79jE4S3I27ZMyL")
+    client = Socrata("www.datos.gov.co", #None)
+                  '5aJ1DExqkSA79jE4S3I27ZMyL',
+                  username="egangiest@gmail.com",
+                  password="5aJ1DExqkSA79jE4S3I27ZMyL")
     results = client.get("gt2j-8ykr", limit=1000000)
 
     Dataset1 = pd.DataFrame.from_records(results)
@@ -46,6 +46,7 @@ def load_api():
     Dataset1['Tipo'] = Dataset1['Tipo'].apply(lambda x: x.upper())
 
     # Función para definir categorias segun el rango de edad
+    @st.cache
     def categoria_edad(edad):
         if edad <= 11:
             return('Niño')
