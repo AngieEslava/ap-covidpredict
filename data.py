@@ -268,7 +268,7 @@ elif nav_link == "Modelo Predictivo":
             
         return X_train, y_train, X_test, y_test
 
-    @st.cache
+    @st.cache(allow_output_mutation=True)
     def modeltrain(X_train, y_train, X_test, y_test):
         from sklearn.ensemble.forest import RandomForestRegressor
         # Generando el modelo 
