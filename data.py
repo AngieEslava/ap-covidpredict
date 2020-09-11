@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 
 @st.cache
 def load_data():
-    #raw = pd.read_csv('datal.csv',encoding='latin-1',low_memory=False)
-    raw = load_api()
+    raw = pd.read_csv('data.csv')
+    #raw = load_api()
     return raw
 data = load_data()
 Dataset_fallecidos = data[data['Atención'] == 'Fallecido']
